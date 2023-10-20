@@ -20,12 +20,24 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <NavSpan data-hover="Sale">Sale</NavSpan>
+          </NavLink>
+          <NavLink href="/new">
+            <NavSpan data-hover="New Releases">New&nbsp;Releases</NavSpan>
+          </NavLink>
+          <NavLink href="/men">
+            <NavSpan data-hover="Men">Men</NavSpan>
+          </NavLink>
+          <NavLink href="/women">
+            <NavSpan data-hover="Women">Women</NavSpan>
+          </NavLink>
+          <NavLink href="/kids">
+            <NavSpan data-hover="Kids">Kids</NavSpan>
+          </NavLink>
+          <NavLink href="/collections">
+            <NavSpan data-hover="Collections">Collections</NavSpan>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -114,12 +126,30 @@ const Filler = styled.div`
   }
 `;
 
+const NavSpan = styled.span`
+  display: inline-block;
+  position: relative;
+  transition: transform 300ms;
+  &::before {
+    position: absolute;
+    top: 100%;
+    font-weight: bold;
+    content: attr(data-hover);
+  }
+
+  &:hover {
+    transform: translateY(-100%);
+    transition: transform 300ms;
+  }
+`;
+
 const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
